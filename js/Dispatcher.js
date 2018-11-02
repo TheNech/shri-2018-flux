@@ -11,8 +11,7 @@ export default class Dispatcher {
      * @param {Function} callback 
      */
     register(callback) {
-        const id = 'id_' + Object.keys(this.callbacks).length;
-        this.callbacks[id] = callback;
+        this.callbacks.push(callback);
     }
 
     /**
