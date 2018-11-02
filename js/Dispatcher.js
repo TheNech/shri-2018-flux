@@ -3,7 +3,7 @@
  */
 export default class Dispatcher {
     constructor() {
-        this.callbacks = {};
+        this.callbacks = [];
     }
 
     /**
@@ -20,8 +20,8 @@ export default class Dispatcher {
      * @param {Object} action 
      */
     dispatch(action) {
-        for (let id in this.callbacks) {
-            this.callbacks[id](action);
-        }
+        this.callbacks.forEach(callback => {
+            callback(action);
+        });
     }
 }
