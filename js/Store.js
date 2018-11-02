@@ -2,10 +2,15 @@
  * Store contain data and notify when it changes
  */
 export default class Store {
-    constructor(state) {
+    constructor(state, dispatcher) {
         this.state = state;
-        this.listeners = [];
+        dispatcher.register(actionToRegister);
     }
+
+    /**
+     * Abstract method
+     */
+    actionToRegister() {}
 
     /**
      * Return current state
