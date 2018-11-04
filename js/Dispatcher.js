@@ -12,6 +12,7 @@ export default class Dispatcher {
      */
     register(callback) {
         this.callbacks.push(callback);
+        console.log('Dispatcher registered callback');
     }
 
     /**
@@ -22,5 +23,6 @@ export default class Dispatcher {
         this.callbacks.forEach(callback => {
             callback(action);
         });
+        console.log('Dispatcher dispatched action');
     }
 }

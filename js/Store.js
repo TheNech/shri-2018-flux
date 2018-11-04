@@ -16,6 +16,7 @@ export default class Store {
      * Return current state
      */
     getState() {
+        console.log('Store returned state');
         return this.state;
     }
 
@@ -25,6 +26,7 @@ export default class Store {
      */
     subscribe(listener) {
         this.listeners.push(listener);
+        console.log('Listener was subscribed');
     }
 
     /**
@@ -35,6 +37,7 @@ export default class Store {
         this.listeners = this.listeners.filter(item => {
             item !== listener
         });
+        console.log('Listener was unsubscribed');
     }
 
     /**
@@ -45,5 +48,6 @@ export default class Store {
         this.listeners.forEach(item => {
             item(data);
         });
+        console.log('Listeners were notifyed');
     }
 }
