@@ -2,15 +2,15 @@
  * Store contain data and notify when it changes
  */
 export default class Store {
-    constructor(state, dispatcher) {
-        this.state = state;
-        dispatcher.register(actionToRegister);
+    constructor(dispatcher) {
+        this.listeners = [];
+        dispatcher.register(this.actionToRegister.bind(this));
     }
 
     /**
      * Abstract method
      */
-    actionToRegister() {}
+    actionToRegister(action) {}
 
     /**
      * Return current state
@@ -44,9 +44,9 @@ export default class Store {
      * Notify listeners about Store changes
      * @param {typeof State} data
      */
-    notify(data) {
+    notify() {
         this.listeners.forEach(item => {
-            item(data);
+            item(this.state);
         });
         console.log('Listeners were notifyed');
     }
